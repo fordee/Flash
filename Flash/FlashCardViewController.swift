@@ -17,8 +17,8 @@ class FlashCardViewController: UIViewController {
 
 	private var deck = Deck()
 
-	private var flashCardView: UIView!
-	private var nextUpView: UIView!
+	private var flashCardView: CardView!
+	private var nextUpView: CardView!
 
 	private var originalBounds = CGRect.zero
 	private var originalCenter = CGPoint.zero
@@ -34,15 +34,16 @@ class FlashCardViewController: UIViewController {
 		super.viewDidLoad()
 
 		setupFlashCardView()
-		flashCardView.backgroundColor = deck.nextCard().backgroundColor
+		flashCardView.render(with: deck.nextCard())
 		setupNextUpView()
-		nextUpView.backgroundColor = deck.nextCard().backgroundColor
+		nextUpView.render(with: deck.nextCard())
 
 		view.addSubview(nextUpView)
 		view.addSubview(flashCardView)
 
 		let panGR = UIPanGestureRecognizer(target: self, action: #selector(handleAttachmentGesture(sender:)))
 		view.addGestureRecognizer(panGR)
+
 	}
 
 	private func setupFlashCardView() {
@@ -50,22 +51,37 @@ class FlashCardViewController: UIViewController {
 		// y: 53
 		// width: 295
 		// height: 509
-		flashCardView = UIView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
+		flashCardView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
 		flashCardView.layer.cornerRadius = 20
+
+		let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
+		flashCardView.addGestureRecognizer(tapGR)
 
 		animator = UIDynamicAnimator(referenceView: view)
 		originalBounds = flashCardView.bounds
 		originalCenter = flashCardView.center
 	}
+
 	private func setupNextUpView() {
 		// x: 42
 		// y: 53
 		// width: 295
 		// height: 509
-		nextUpView = UIView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
+		nextUpView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
 		nextUpView.isUserInteractionEnabled = false
 		nextUpView.layer.cornerRadius = 20
 		nextUpView.transform = CGAffineTransform(scaleX: minScale, y: minScale)
+	}
+
+	@objc func handleTap(sender: Any) {
+		print("Tapped...")
+		let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+
+		UIView.transition(with: flashCardView, duration: 1.0, options: transitionOptions, animations: {
+			self.flashCardView.isAnswerCard.toggle()
+			let currentCard =  self.deck.currentCard
+			self.flashCardView.frontLabel.text = self.flashCardView.isAnswerCard ? currentCard.backWord : currentCard.frontWord // TODO: This should be handled in the render function.
+		})
 	}
 
 	@objc func handleAttachmentGesture(sender: UIPanGestureRecognizer) {
@@ -121,7 +137,7 @@ class FlashCardViewController: UIViewController {
 				}
 
 			} else {
-				resetDemo()
+				returnCardToDeck()
 			}
 
 		default:
@@ -149,15 +165,15 @@ class FlashCardViewController: UIViewController {
 
 		// Setup new cards
 		setupFlashCardView()
-		flashCardView.backgroundColor = deck.previousCard.backgroundColor
+		flashCardView.render(with: deck.previousCard)
 		setupNextUpView()
-		nextUpView.backgroundColor = deck.nextCard().backgroundColor
+		nextUpView.render(with: deck.nextCard())
 
 		view.addSubview(nextUpView)
 		view.addSubview(flashCardView)
 	}
 
-	func resetDemo() {
+	func returnCardToDeck() {
 		animator.removeAllBehaviors()
 
 		UIView.animate(withDuration: 0.45) {

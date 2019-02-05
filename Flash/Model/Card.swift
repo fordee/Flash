@@ -10,7 +10,12 @@ import UIKit
 
 struct Card {
 	let backgroundColor: UIColor
-	init(backgroundColor: UIColor) {
+	let frontWord: String
+	let backWord: String
+
+	init(backgroundColor: UIColor, frontWord: String, backWord: String) {
 		self.backgroundColor = backgroundColor
+		self.frontWord = frontWord
+		self.backWord = backWord
 	}
 }
