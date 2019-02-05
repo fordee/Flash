@@ -40,19 +40,14 @@ class FlashCardViewController: UIViewController {
 
 		view.addSubview(nextUpView)
 		view.addSubview(flashCardView)
-
-		let panGR = UIPanGestureRecognizer(target: self, action: #selector(handleAttachmentGesture(sender:)))
-		view.addGestureRecognizer(panGR)
-
 	}
 
 	private func setupFlashCardView() {
-		// x: 42
-		// y: 53
-		// width: 295
-		// height: 509
 		flashCardView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
 		flashCardView.layer.cornerRadius = 20
+
+		let panGR = UIPanGestureRecognizer(target: self, action: #selector(handleAttachmentGesture(sender:)))
+		flashCardView.addGestureRecognizer(panGR)
 
 		let tapGR = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
 		flashCardView.addGestureRecognizer(tapGR)
@@ -63,10 +58,6 @@ class FlashCardViewController: UIViewController {
 	}
 
 	private func setupNextUpView() {
-		// x: 42
-		// y: 53
-		// width: 295
-		// height: 509
 		nextUpView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
 		nextUpView.isUserInteractionEnabled = false
 		nextUpView.layer.cornerRadius = 20
