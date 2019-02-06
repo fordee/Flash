@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Study-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FlashCardViewController" customModule="Flash" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,11 +20,27 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Ml0-E1-5uN"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="z4v-by-JjY"/>
+                    <tabBarItem key="tabBarItem" title="Study" image="Study" id="z4v-by-JjY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117.5999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="748" y="-89"/>
+        </scene>
+        <!--Flash Decks-->
+        <scene sceneID="YyE-OH-Nh6">
+            <objects>
+                <viewController id="Xol-sI-qb6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7ab-ix-PHl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ahw-xG-sXf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Flash Decks" image="Cards" id="6vo-mN-oHY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hFd-xa-7OQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="575"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a0O-EE-tZD">
@@ -37,12 +53,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aCi-mz-mog"/>
+                        <segue destination="Xol-sI-qb6" kind="relationship" relationship="viewControllers" id="zIQ-Bq-Gbr"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2Lo-Ie-cam"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zal-qq-RLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-468" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cards" width="24" height="24"/>
+        <image name="Study" width="24" height="24"/>
+    </resources>
 </document>

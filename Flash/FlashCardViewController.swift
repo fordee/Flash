@@ -8,10 +8,18 @@
 
 import UIKit
 
+enum DifficultyRank: String {
+	case easy
+	case medium
+	case hard
+	case fail
+}
+
+
 class FlashCardViewController: UIViewController {
 
-	let ThrowingThreshold: CGFloat = 1000
-	let ThrowingVelocityPadding: CGFloat = 10
+	let throwingThreshold: CGFloat = 1000
+	let throwingVelocityPadding: CGFloat = 10
 
 	let minScale: CGFloat = 0.8
 
@@ -34,7 +42,7 @@ class FlashCardViewController: UIViewController {
 		super.viewDidLoad()
 
 		setupFlashCardView()
-		flashCardView.render(with: deck.nextCard())
+		flashCardView.render(with: deck.currentCard)
 		setupNextUpView()
 		nextUpView.render(with: deck.nextCard())
 
@@ -65,13 +73,12 @@ class FlashCardViewController: UIViewController {
 	}
 
 	@objc func handleTap(sender: Any) {
-		print("Tapped...")
 		let transitionOptions: UIView.AnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
 
 		UIView.transition(with: flashCardView, duration: 1.0, options: transitionOptions, animations: {
 			self.flashCardView.isAnswerCard.toggle()
-			let currentCard =  self.deck.currentCard
-			self.flashCardView.frontLabel.text = self.flashCardView.isAnswerCard ? currentCard.backWord : currentCard.frontWord // TODO: This should be handled in the render function.
+			let currentCard =  self.deck.previousCard // Because we have skipped ahead for next card view
+			self.flashCardView.render(with: currentCard)
 		})
 	}
 
@@ -97,10 +104,14 @@ class FlashCardViewController: UIViewController {
 			let velocity = sender.velocity(in: view)
 			let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
 
-			if magnitude > ThrowingThreshold {
+			let angle = atan2(velocity.y, velocity.x) * 180.0 / CGFloat.pi
+			let difficulty = getDifficultyRank(from: angle).rawValue
+			print("Difficulty: \(difficulty)")
+
+			if magnitude > throwingThreshold {
 				let pushBehavior = UIPushBehavior(items: [flashCardView], mode: .instantaneous)
 				pushBehavior.pushDirection = CGVector(dx: velocity.x / 10, dy: velocity.y / 10)
-				pushBehavior.magnitude = magnitude / ThrowingVelocityPadding
+				pushBehavior.magnitude = magnitude / throwingVelocityPadding
 
 				self.pushBehavior = pushBehavior
 				animator.addBehavior(pushBehavior)
@@ -149,14 +160,14 @@ class FlashCardViewController: UIViewController {
 		}
 	}
 
-	func addNewCard() {
+	private func addNewCard() {
 		// Remove old cards
 		flashCardView.removeFromSuperview()
 		nextUpView.removeFromSuperview()
 
 		// Setup new cards
 		setupFlashCardView()
-		flashCardView.render(with: deck.previousCard)
+		flashCardView.render(with: deck.currentCard)
 		setupNextUpView()
 		nextUpView.render(with: deck.nextCard())
 
@@ -164,7 +175,7 @@ class FlashCardViewController: UIViewController {
 		view.addSubview(flashCardView)
 	}
 
-	func returnCardToDeck() {
+	private func returnCardToDeck() {
 		animator.removeAllBehaviors()
 
 		UIView.animate(withDuration: 0.45) {
@@ -174,6 +185,32 @@ class FlashCardViewController: UIViewController {
 		}
 	}
 
+	private func getDifficultyRank(from angle: CGFloat) -> DifficultyRank {
+		// convert to 360 degrees
+		let angle360: CGFloat
+		if angle < 0 {
+			angle360 = 180 + (180 - abs(angle))
+		} else {
+			angle360 = angle
+		}
+		// Add 45 degree offset to match pattern matching easier
+		let offsetAngle = angle360 + 45
+
+		switch offsetAngle {
+		case 0..<90:
+			return .hard
+		case 90..<180:
+			return .fail
+		case 180..<270:
+			return .easy
+		case 270..<360:
+			return .medium
+		case 360...405:
+			return .hard
+		default:
+			return .fail
+		}
+	}
 
 }
 

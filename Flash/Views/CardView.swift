@@ -37,7 +37,8 @@ class CardView: UIView {
 	}
 
 	private func labelStyle(lbl: UILabel) {
-		lbl.height(44)
+		lbl.textAlignment = .center
+		lbl.numberOfLines = 0 // Unlimited lines
 		lbl.font = lbl.font.withSize(28)
 		lbl.textColor = .white
 	}
