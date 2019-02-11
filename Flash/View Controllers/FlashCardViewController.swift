@@ -23,7 +23,8 @@ class FlashCardViewController: UIViewController {
 
 	let minScale: CGFloat = 0.8
 
-	private var deck = Deck()
+	private var collection = Collection()
+	private var deck: Deck!
 
 	private var flashCardView: CardView!
 	private var nextUpView: CardView!
@@ -41,6 +42,8 @@ class FlashCardViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		deck = collection.decks.first
+
 		setupFlashCardView()
 		flashCardView.render(with: deck.currentCard)
 		setupNextUpView()
@@ -48,6 +51,13 @@ class FlashCardViewController: UIViewController {
 
 		view.addSubview(nextUpView)
 		view.addSubview(flashCardView)
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		deck = collection.decks.first
+
 	}
 
 	private func setupFlashCardView() {

@@ -41,3 +41,55 @@ extension UIColor {
 	}
 }
 
+extension FileManager {
+	public func urlFor(filePath: String, in directory: FileManager.SearchPathDirectory = .documentDirectory, domain: FileManager.SearchPathDomainMask = .userDomainMask) -> URL?  {
+		guard let directory = FileManager.default.urls(for: directory, in: domain).first else { return nil }
+		return directory.appendingPathComponent(filePath)
+	}
+}
+
+
+extension String {
+
+	func getText(between startString: String, and endString: String) -> String? {
+		if var startIndex = self.index(of: startString) {
+
+			let newSearchString = String(self[startIndex...])
+			startIndex = newSearchString.startIndex
+			
+			if var endIndex = newSearchString.index(of: endString) {
+				endIndex = newSearchString.index(endIndex, offsetBy: -endString.count)
+				let range = startIndex..<endIndex
+				return String(newSearchString[range])
+			} else {
+				return nil
+			}
+		}
+		return nil
+	}
+
+	func index(of substring: String) -> String.Index? {
+		var index = 0
+
+		guard self.contains(substring) else {
+			print("\(substring) not found.")
+			return nil
+		}
+
+		for char in self {
+			if substring.first == char {
+				let startOfFoundCharacter = self.index(self.startIndex, offsetBy: index)
+				let lengthOfFoundCharacter = self.index(self.startIndex, offsetBy: (substring.count + index))
+				let range = startOfFoundCharacter..<lengthOfFoundCharacter
+
+				if String(self[range]) == substring {
+					print("Found: \(substring)")
+					return lengthOfFoundCharacter
+				}
+			}
+			index += 1
+		}
+		return nil
+	}
+}
+

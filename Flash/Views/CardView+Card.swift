@@ -11,10 +11,10 @@ import UIKit
 extension CardView {
 
 	func render(with card: Card) {
-		backgroundColor = card.backgroundColor
+		backgroundColor = card.backgroundColor.uiColor
 
-		let brightness = card.backgroundColor.brightness
-		//print("Brightness: \(brightness)")
+		let brightness = backgroundColor!.brightness
+		print("Brightness: \(brightness)")
 		frontLabel.textColor = brightness > 0.75 ? UIColor.black : UIColor.white
 		if isAnswerCard {
 			frontLabel.text = card.backWord

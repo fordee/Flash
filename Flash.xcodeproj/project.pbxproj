@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4935F920220F8A7000DA0971 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4935F91F220F8A7000DA0971 /* Collection.swift */; };
 		493824912204F1C300B4FFEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493824902204F1C300B4FFEA /* AppDelegate.swift */; };
 		493824932204F1C300B4FFEA /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493824922204F1C300B4FFEA /* FlashCardViewController.swift */; };
 		493824962204F1C300B4FFEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493824942204F1C300B4FFEA /* Main.storyboard */; };
@@ -18,6 +19,12 @@
 		49B219A3220A03770076FBD9 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A2220A03770076FBD9 /* Deck.swift */; };
 		49B219A6220A1B160076FBD9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A5220A1B160076FBD9 /* CardView.swift */; };
 		49B219A8220A1D4C0076FBD9 /* CardView+Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A7220A1D4C0076FBD9 /* CardView+Card.swift */; };
+		49B219AB220C92830076FBD9 /* FlashDecksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219AA220C92830076FBD9 /* FlashDecksViewController.swift */; };
+		49B219AE220C94280076FBD9 /* DeckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219AD220C94280076FBD9 /* DeckCell.swift */; };
+		49B219B0220E364C0076FBD9 /* FlashDeckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219AF220E364B0076FBD9 /* FlashDeckDetailViewController.swift */; };
+		49B219B2220E37700076FBD9 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B1220E37700076FBD9 /* CardCell.swift */; };
+		49B219B4220E55ED0076FBD9 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */; };
+		49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */; };
 		BDD42F17256A1A6E06A187B4 /* Pods_Flash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334A7CCF1808A037B8705694 /* Pods_Flash.framework */; };
 		F2F38F0359E83AA235719375 /* Pods_FlashTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */; };
 /* End PBXBuildFile section */
@@ -34,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		334A7CCF1808A037B8705694 /* Pods_Flash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4935F91F220F8A7000DA0971 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		4938248D2204F1C300B4FFEA /* Flash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		493824902204F1C300B4FFEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493824922204F1C300B4FFEA /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,12 @@
 		49B219A2220A03770076FBD9 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		49B219A5220A1B160076FBD9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		49B219A7220A1D4C0076FBD9 /* CardView+Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardView+Card.swift"; sourceTree = "<group>"; };
+		49B219AA220C92830076FBD9 /* FlashDecksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashDecksViewController.swift; sourceTree = "<group>"; };
+		49B219AD220C94280076FBD9 /* DeckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckCell.swift; sourceTree = "<group>"; };
+		49B219AF220E364B0076FBD9 /* FlashDeckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashDeckDetailViewController.swift; sourceTree = "<group>"; };
+		49B219B1220E37700076FBD9 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
+		49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		69F3D243676D9D0C4F8240CB /* Pods-Flash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flash/Pods-Flash.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5807DD6B1E8B98AE59DA73 /* Pods-FlashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlashTests/Pods-FlashTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlashTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,10 +124,11 @@
 		4938248F2204F1C300B4FFEA /* Flash */ = {
 			isa = PBXGroup;
 			children = (
-				49B219A4220A1AFD0076FBD9 /* Views */,
 				49B2199F220A02AC0076FBD9 /* Model */,
+				49B219AC220C94050076FBD9 /* Cells */,
+				49B219A9220C922A0076FBD9 /* View Controllers */,
+				49B219A4220A1AFD0076FBD9 /* Views */,
 				493824902204F1C300B4FFEA /* AppDelegate.swift */,
-				493824922204F1C300B4FFEA /* FlashCardViewController.swift */,
 				493824942204F1C300B4FFEA /* Main.storyboard */,
 				493824972204F1C900B4FFEA /* Assets.xcassets */,
 				493824992204F1C900B4FFEA /* LaunchScreen.storyboard */,
@@ -137,6 +152,7 @@
 			children = (
 				49B219A0220A02C20076FBD9 /* Card.swift */,
 				49B219A2220A03770076FBD9 /* Deck.swift */,
+				4935F91F220F8A7000DA0971 /* Collection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +164,27 @@
 				49B219A7220A1D4C0076FBD9 /* CardView+Card.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		49B219A9220C922A0076FBD9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				493824922204F1C300B4FFEA /* FlashCardViewController.swift */,
+				49B219AA220C92830076FBD9 /* FlashDecksViewController.swift */,
+				49B219AF220E364B0076FBD9 /* FlashDeckDetailViewController.swift */,
+				49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */,
+				49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		49B219AC220C94050076FBD9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				49B219AD220C94280076FBD9 /* DeckCell.swift */,
+				49B219B1220E37700076FBD9 /* CardCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		9742E8A503D3FE37E67A88A6 /* Frameworks */ = {
@@ -320,10 +357,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B219AB220C92830076FBD9 /* FlashDecksViewController.swift in Sources */,
+				49B219B4220E55ED0076FBD9 /* AddDeckViewController.swift in Sources */,
 				493824932204F1C300B4FFEA /* FlashCardViewController.swift in Sources */,
 				493824912204F1C300B4FFEA /* AppDelegate.swift in Sources */,
+				49B219B0220E364C0076FBD9 /* FlashDeckDetailViewController.swift in Sources */,
+				4935F920220F8A7000DA0971 /* Collection.swift in Sources */,
+				49B219AE220C94280076FBD9 /* DeckCell.swift in Sources */,
+				49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */,
 				49B219A3220A03770076FBD9 /* Deck.swift in Sources */,
 				49B219A1220A02C20076FBD9 /* Card.swift in Sources */,
+				49B219B2220E37700076FBD9 /* CardCell.swift in Sources */,
 				49B219A8220A1D4C0076FBD9 /* CardView+Card.swift in Sources */,
 				49B219A6220A1B160076FBD9 /* CardView.swift in Sources */,
 				49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */,
@@ -498,7 +542,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -517,7 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
