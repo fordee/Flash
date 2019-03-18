@@ -7,6 +7,10 @@
 //
 
 import UIKit
+//import CSV
+//import SQLite
+
+
 
 struct Deck: Equatable, Hashable, Codable {
 	var title: String
@@ -16,6 +20,23 @@ struct Deck: Equatable, Hashable, Codable {
 	var currentCard: Card {
 		return cards[positionInDeck]
 	}
+
+//	static func setupDeckTable() {
+//		do {
+//			let db = try Connection(Connection.Location.uri("Documents"), readonly: false)
+//
+//			let deck = Table("deck")
+//			let id = Expression<Int64>("id")
+//			let title = Expression<String>("title")
+//
+//			try db.run(deck.create { t in
+//				t.column(id, primaryKey: true)
+//				t.column(title)
+//			})
+//		} catch {
+//			print("Error during database operation: \(error.localizedDescription)")
+//		}
+//	}
 
 	var previousCard: Card {
 		if positionInDeck == 0 {
@@ -27,14 +48,54 @@ struct Deck: Equatable, Hashable, Codable {
 
 	init(title: String) {
 		self.title = title
-		//setupCards()
+	}
+
+//	init(deckFileName: String) {
+//		title = "csv"
+//
+//		guard let path = Bundle.main.path(forResource: deckFileName, ofType: nil) else { return }
+//		let url = URL(fileURLWithPath: path)
+//
+//		do {
+//			let data = try Data(contentsOf: url)
+//			let decoder = CSVDecoder()
+//			decoder.delimiters = (.comma, .carriageReturn)
+//			let result = try decoder.decode([[String]].self, from: data)
+//			//print(result)
+//			title = "JLTP 2 Vocab"
+//
+//			for line in result {
+//				let frontWord: String
+//				let backWord: String
+//				if line[2] == "" {
+//					frontWord = line[1]
+//					backWord = line[3] + "\n" + line[4]
+//				} else {
+//					frontWord = line[2]
+//					backWord = line[1] + "\n" + line[3] + "\n" + line[4]
+//				}
+//
+//				let card = Card(backgroundColor: Color.random(), frontWord: frontWord, backWord: backWord)
+//				cards.append(card)
+//			}
+//			print("finished.")
+//		}
+//		catch {
+//			fatalError("Error reading JLPT2Vocab.csv")
+//		}
+//
+//	}
+
+	mutating func shuffle() {
+		cards.shuffle()
 	}
 
 	mutating func nextCard() -> Card {
 		positionInDeck += 1
 		if positionInDeck == cards.count {
-				positionInDeck = 0
+			positionInDeck = 0
 		}
+		print("Next Card called. positionInDeck: \(positionInDeck)")
 		return cards[positionInDeck]
 	}
 

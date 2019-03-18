@@ -14,6 +14,14 @@
 		493824982204F1C900B4FFEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 493824972204F1C900B4FFEA /* Assets.xcassets */; };
 		4938249B2204F1C900B4FFEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493824992204F1C900B4FFEA /* LaunchScreen.storyboard */; };
 		493824A62204F1C900B4FFEA /* FlashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493824A52204F1C900B4FFEA /* FlashTests.swift */; };
+		4947F663222D8DCC001E74F7 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947F662222D8DCC001E74F7 /* LanguageTableViewController.swift */; };
+		49968FB92225A51300E11E1D /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */; };
+		49968FBB2226EB3D00E11E1D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49968FBA2226EB3D00E11E1D /* Color.swift */; };
+		49B10840221761AF009FAAFF /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; };
+		49B1084322176648009FAAFF /* JLPT2Vocab.csv in Resources */ = {isa = PBXBuildFile; fileRef = 49B1084222176648009FAAFF /* JLPT2Vocab.csv */; };
+		49B10844221769F3009FAAFF /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; };
+		49B10845221769F3009FAAFF /* CSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		49B1084822176E6B009FAAFF /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 49B1084722176E6B009FAAFF /* test.csv */; };
 		49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2199D22089CCC0076FBD9 /* Utility.swift */; };
 		49B219A1220A02C20076FBD9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A0220A02C20076FBD9 /* Card.swift */; };
 		49B219A3220A03770076FBD9 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A2220A03770076FBD9 /* Deck.swift */; };
@@ -25,6 +33,11 @@
 		49B219B2220E37700076FBD9 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B1220E37700076FBD9 /* CardCell.swift */; };
 		49B219B4220E55ED0076FBD9 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */; };
 		49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */; };
+		49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */; };
+		49FDECFD221754E60063F3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFC221754E60063F3C2 /* AppDelegate.swift */; };
+		49FDECFF221754E60063F3C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFE221754E60063F3C2 /* ViewController.swift */; };
+		49FDED01221754E90063F3C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FDED00221754E90063F3C2 /* Assets.xcassets */; };
+		49FDED04221754E90063F3C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49FDED02221754E90063F3C2 /* Main.storyboard */; };
 		BDD42F17256A1A6E06A187B4 /* Pods_Flash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 334A7CCF1808A037B8705694 /* Pods_Flash.framework */; };
 		F2F38F0359E83AA235719375 /* Pods_FlashTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +52,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		49B10846221769F4009FAAFF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				49B10845221769F3009FAAFF /* CSV.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		334A7CCF1808A037B8705694 /* Pods_Flash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4935F91F220F8A7000DA0971 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -52,6 +79,12 @@
 		493824A12204F1C900B4FFEA /* FlashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		493824A52204F1C900B4FFEA /* FlashTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashTests.swift; sourceTree = "<group>"; };
 		493824A72204F1C900B4FFEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4947F662222D8DCC001E74F7 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewController.swift; sourceTree = "<group>"; };
+		49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
+		49968FBA2226EB3D00E11E1D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		49B1083F221761AF009FAAFF /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CSV.framework; sourceTree = "<group>"; };
+		49B1084222176648009FAAFF /* JLPT2Vocab.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JLPT2Vocab.csv; sourceTree = "<group>"; };
+		49B1084722176E6B009FAAFF /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		49B2199D22089CCC0076FBD9 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		49B219A0220A02C20076FBD9 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		49B219A2220A03770076FBD9 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -63,6 +96,14 @@
 		49B219B1220E37700076FBD9 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		49FDECFA221754E20063F3C2 /* Flash-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49FDECFC221754E60063F3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		49FDECFE221754E60063F3C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		49FDED00221754E90063F3C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49FDED03221754E90063F3C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49FDED05221754E90063F3C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49FDED06221754EA0063F3C2 /* Flash_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flash_macOS.entitlements; sourceTree = "<group>"; };
 		69F3D243676D9D0C4F8240CB /* Pods-Flash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flash.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flash/Pods-Flash.debug.xcconfig"; sourceTree = "<group>"; };
 		9C5807DD6B1E8B98AE59DA73 /* Pods-FlashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlashTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlashTests/Pods-FlashTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlashTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +116,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B10844221769F3009FAAFF /* CSV.framework in Frameworks */,
 				BDD42F17256A1A6E06A187B4 /* Pods_Flash.framework in Frameworks */,
+				49B10840221761AF009FAAFF /* CSV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +127,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F38F0359E83AA235719375 /* Pods_FlashTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49FDECF7221754E20063F3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +156,7 @@
 			children = (
 				4938248F2204F1C300B4FFEA /* Flash */,
 				493824A42204F1C900B4FFEA /* FlashTests */,
+				49FDECFB221754E60063F3C2 /* Flash-macOS */,
 				4938248E2204F1C300B4FFEA /* Products */,
 				403758CB1F4FFE855DEB7072 /* Pods */,
 				9742E8A503D3FE37E67A88A6 /* Frameworks */,
@@ -117,6 +168,7 @@
 			children = (
 				4938248D2204F1C300B4FFEA /* Flash.app */,
 				493824A12204F1C900B4FFEA /* FlashTests.xctest */,
+				49FDECFA221754E20063F3C2 /* Flash-macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,12 +180,14 @@
 				49B219AC220C94050076FBD9 /* Cells */,
 				49B219A9220C922A0076FBD9 /* View Controllers */,
 				49B219A4220A1AFD0076FBD9 /* Views */,
+				49B1084122176601009FAAFF /* Resources */,
 				493824902204F1C300B4FFEA /* AppDelegate.swift */,
 				493824942204F1C300B4FFEA /* Main.storyboard */,
 				493824972204F1C900B4FFEA /* Assets.xcassets */,
 				493824992204F1C900B4FFEA /* LaunchScreen.storyboard */,
 				4938249C2204F1C900B4FFEA /* Info.plist */,
 				49B2199D22089CCC0076FBD9 /* Utility.swift */,
+				49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */,
 			);
 			path = Flash;
 			sourceTree = "<group>";
@@ -147,12 +201,22 @@
 			path = FlashTests;
 			sourceTree = "<group>";
 		};
+		49B1084122176601009FAAFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49B1084722176E6B009FAAFF /* test.csv */,
+				49B1084222176648009FAAFF /* JLPT2Vocab.csv */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		49B2199F220A02AC0076FBD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				49B219A0220A02C20076FBD9 /* Card.swift */,
 				49B219A2220A03770076FBD9 /* Deck.swift */,
 				4935F91F220F8A7000DA0971 /* Collection.swift */,
+				49968FBA2226EB3D00E11E1D /* Color.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +238,8 @@
 				49B219AF220E364B0076FBD9 /* FlashDeckDetailViewController.swift */,
 				49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */,
 				49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */,
+				49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */,
+				4947F662222D8DCC001E74F7 /* LanguageTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -187,9 +253,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		49FDECFB221754E60063F3C2 /* Flash-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				49FDECFC221754E60063F3C2 /* AppDelegate.swift */,
+				49FDECFE221754E60063F3C2 /* ViewController.swift */,
+				49FDED00221754E90063F3C2 /* Assets.xcassets */,
+				49FDED02221754E90063F3C2 /* Main.storyboard */,
+				49FDED05221754E90063F3C2 /* Info.plist */,
+				49FDED06221754EA0063F3C2 /* Flash_macOS.entitlements */,
+			);
+			path = "Flash-macOS";
+			sourceTree = "<group>";
+		};
 		9742E8A503D3FE37E67A88A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49B1083F221761AF009FAAFF /* CSV.framework */,
 				334A7CCF1808A037B8705694 /* Pods_Flash.framework */,
 				A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */,
 			);
@@ -208,6 +288,7 @@
 				4938248A2204F1C300B4FFEA /* Frameworks */,
 				4938248B2204F1C300B4FFEA /* Resources */,
 				5987597E8F0B7BE921A6EFB0 /* [CP] Embed Pods Frameworks */,
+				49B10846221769F4009FAAFF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,6 +318,23 @@
 			productReference = 493824A12204F1C900B4FFEA /* FlashTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		49FDECF9221754E20063F3C2 /* Flash-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49FDED07221754EA0063F3C2 /* Build configuration list for PBXNativeTarget "Flash-macOS" */;
+			buildPhases = (
+				49FDECF6221754E20063F3C2 /* Sources */,
+				49FDECF7221754E20063F3C2 /* Frameworks */,
+				49FDECF8221754E20063F3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Flash-macOS";
+			productName = "Flash-macOS";
+			productReference = 49FDECFA221754E20063F3C2 /* Flash-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -253,6 +351,9 @@
 					493824A02204F1C900B4FFEA = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 4938248C2204F1C300B4FFEA;
+					};
+					49FDECF9221754E20063F3C2 = {
+						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
@@ -271,6 +372,7 @@
 			targets = (
 				4938248C2204F1C300B4FFEA /* Flash */,
 				493824A02204F1C900B4FFEA /* FlashTests */,
+				49FDECF9221754E20063F3C2 /* Flash-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -282,7 +384,9 @@
 			files = (
 				4938249B2204F1C900B4FFEA /* LaunchScreen.storyboard in Resources */,
 				493824982204F1C900B4FFEA /* Assets.xcassets in Resources */,
+				49B1084822176E6B009FAAFF /* test.csv in Resources */,
 				493824962204F1C300B4FFEA /* Main.storyboard in Resources */,
+				49B1084322176648009FAAFF /* JLPT2Vocab.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +394,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49FDECF8221754E20063F3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49FDED01221754E90063F3C2 /* Assets.xcassets in Resources */,
+				49FDED04221754E90063F3C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,10 +416,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Flash/Pods-Flash-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,8 +477,11 @@
 				493824932204F1C300B4FFEA /* FlashCardViewController.swift in Sources */,
 				493824912204F1C300B4FFEA /* AppDelegate.swift in Sources */,
 				49B219B0220E364C0076FBD9 /* FlashDeckDetailViewController.swift in Sources */,
+				49968FBB2226EB3D00E11E1D /* Color.swift in Sources */,
 				4935F920220F8A7000DA0971 /* Collection.swift in Sources */,
 				49B219AE220C94280076FBD9 /* DeckCell.swift in Sources */,
+				49968FB92225A51300E11E1D /* SpeechSynthesizer.swift in Sources */,
+				4947F663222D8DCC001E74F7 /* LanguageTableViewController.swift in Sources */,
 				49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */,
 				49B219A3220A03770076FBD9 /* Deck.swift in Sources */,
 				49B219A1220A02C20076FBD9 /* Card.swift in Sources */,
@@ -371,6 +489,7 @@
 				49B219A8220A1D4C0076FBD9 /* CardView+Card.swift in Sources */,
 				49B219A6220A1B160076FBD9 /* CardView.swift in Sources */,
 				49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */,
+				49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +498,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				493824A62204F1C900B4FFEA /* FlashTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49FDECF6221754E20063F3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49FDECFF221754E60063F3C2 /* ViewController.swift in Sources */,
+				49FDECFD221754E60063F3C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +535,14 @@
 				4938249A2204F1C900B4FFEA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		49FDED02221754E90063F3C2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49FDED03221754E90063F3C2 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -535,6 +671,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 322WP4362D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Flash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -542,7 +682,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -554,6 +694,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 322WP4362D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Flash/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,7 +705,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -610,6 +754,50 @@
 			};
 			name = Release;
 		};
+		49FDED08221754EA0063F3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Flash-macOS/Flash_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				INFOPLIST_FILE = "Flash-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.4DWare.Flash-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		49FDED09221754EA0063F3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Flash-macOS/Flash_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 322WP4362D;
+				INFOPLIST_FILE = "Flash-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.4DWare.Flash-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -636,6 +824,15 @@
 			buildConfigurations = (
 				493824AE2204F1C900B4FFEA /* Debug */,
 				493824AF2204F1C900B4FFEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49FDED07221754EA0063F3C2 /* Build configuration list for PBXNativeTarget "Flash-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49FDED08221754EA0063F3C2 /* Debug */,
+				49FDED09221754EA0063F3C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

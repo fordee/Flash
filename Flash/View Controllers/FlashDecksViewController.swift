@@ -27,10 +27,14 @@ class FlashDecksViewController: UIViewController {
 		super.viewDidLoad()
 		setupDecks()
 		title = "Flash Decks"
+
+		//let sampleDeck = Deck(deckFileName: "JLPT2Vocab.csv")
+		//collection.decks.append(sampleDeck)
+		//let sampleDeck = Deck(deckFileName: "test.csv")
 	}
 
 	func setupDecks() {
-
+		//Deck.setupDeckTable()
 		//decks.append(Deck(title: "1500 Most Used Kanji"))
 		//decks.append(Deck(title: "Japanese Vocabulary Deck"))
 		//decks.append(Deck(title: "Hiragana"))

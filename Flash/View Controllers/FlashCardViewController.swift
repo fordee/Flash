@@ -7,6 +7,8 @@
 //
 
 import UIKit
+//import CSV
+import AVFoundation
 
 enum DifficultyRank: String {
 	case easy
@@ -18,10 +20,15 @@ enum DifficultyRank: String {
 
 class FlashCardViewController: UIViewController {
 
-	let throwingThreshold: CGFloat = 1000
-	let throwingVelocityPadding: CGFloat = 10
+	private let cardX = 42
+	private let cardY = 53
+	private let cardWidth = 295
+	private let cardHeight = 509
 
-	let minScale: CGFloat = 0.8
+	private let throwingThreshold: CGFloat = 1000
+	private let throwingVelocityPadding: CGFloat = 10
+
+	private let minScale: CGFloat = 0.8
 
 	private var collection = Collection()
 	private var deck: Deck!
@@ -41,8 +48,10 @@ class FlashCardViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		view.backgroundColor = UIColor(named: "FlashBackgroundColor")
 
 		deck = collection.decks.first
+		deck.shuffle()
 
 		setupFlashCardView()
 		flashCardView.render(with: deck.currentCard)
@@ -53,16 +62,11 @@ class FlashCardViewController: UIViewController {
 		view.addSubview(flashCardView)
 	}
 
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		deck = collection.decks.first
-
-	}
-
 	private func setupFlashCardView() {
-		flashCardView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
+		let cardFrame = CGRect(x: cardX, y: cardY, width: cardWidth, height: cardHeight)
+		flashCardView = CardView(frame: cardFrame)
 		flashCardView.layer.cornerRadius = 20
+		addShadow(to: flashCardView)
 
 		let panGR = UIPanGestureRecognizer(target: self, action: #selector(handleAttachmentGesture(sender:)))
 		flashCardView.addGestureRecognizer(panGR)
@@ -76,10 +80,20 @@ class FlashCardViewController: UIViewController {
 	}
 
 	private func setupNextUpView() {
-		nextUpView = CardView(frame: CGRect(x: 42, y: 53, width: 295, height: 509))
+		let cardFrame = CGRect(x: cardX, y: cardY, width: cardWidth, height: cardHeight)
+		nextUpView = CardView(frame: cardFrame)
 		nextUpView.isUserInteractionEnabled = false
 		nextUpView.layer.cornerRadius = 20
 		nextUpView.transform = CGAffineTransform(scaleX: minScale, y: minScale)
+		addShadow(to: nextUpView)
+	}
+
+	private func addShadow(to view: UIView) {
+		view.layer.masksToBounds = false
+		view.layer.shadowRadius = 20
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOpacity = 0.5
+		view.layer.shadowOffset = CGSize(width: 3, height: 3)
 	}
 
 	@objc func handleTap(sender: Any) {

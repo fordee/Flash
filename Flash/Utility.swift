@@ -93,3 +93,12 @@ extension String {
 	}
 }
 
+func detectedLangauge<T: StringProtocol>(_ forString: T) -> String? {
+	return NSLinguisticTagger.dominantLanguage(for: String(forString)) //else {
+//		return nil
+//	}
+//
+//	let detectedLangauge = Locale.current.localizedString(forIdentifier: languageCode)
+//
+//	return detectedLangauge
+}
