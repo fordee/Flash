@@ -14,6 +14,10 @@ import UIKit
 
 struct Deck: Equatable, Hashable, Codable {
 	var title: String
+	var frontLanguage: String?
+	var backLanguage: String?
+
+
 	var cards: [Card] = []
 	private var positionInDeck = 0
 

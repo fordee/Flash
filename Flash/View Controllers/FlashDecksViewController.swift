@@ -21,6 +21,8 @@ class FlashDecksViewController: UIViewController {
 
 	var collection = Collection()
 
+	var accessoryRowSelected: Int? = nil
+
 	//var decks: [Deck] = []
 
 	override func viewDidLoad() {
@@ -61,7 +63,13 @@ class FlashDecksViewController: UIViewController {
 				vc.delegate = self
 				vc.isAdd = true
 			}
-
+		case "EditDeck":
+			if let vc = segue.destination as? AddDeckViewController, let cell = (sender as? DeckCell), let path = decksTableView.indexPath(for: cell) {
+				vc.deck = collection.decks[path.row]
+				//vc.deckTitle = text
+				vc.delegate = self
+				vc.isAdd = false
+			}
 		default:
 			fatalError("Unknown segue.identifier: \(segue.identifier ?? "")")
 		}
@@ -106,6 +114,11 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 		return cell
 	}
 
+	func tableView(_ tableView: UITableView,	accessoryButtonTappedForRowWith indexPath: IndexPath) {
+		print("Accessory row: \(indexPath.row)")
+		accessoryRowSelected = indexPath.row
+	}
+
 
 }
 
@@ -125,11 +138,14 @@ extension FlashDecksViewController: FlashDecksViewControllerDelegate {
 	func update(deck: Deck) {
 		if let path = decksTableView.indexPathForSelectedRow {
 			collection.decks[path.row] = deck
-			collection.save()
-			decksTableView.reloadData()
+		} else if let row = accessoryRowSelected {
+			collection.decks[row] = deck
+			accessoryRowSelected = nil
 		} else {
 			print("No row selected")
 		}
+		collection.save()
+		decksTableView.reloadData()
 	}
 
 	func update(cards: [Card]) {
