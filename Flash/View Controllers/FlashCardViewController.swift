@@ -50,7 +50,7 @@ class FlashCardViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = UIColor(named: "FlashBackgroundColor")
 
-		deck = collection.decks.first
+		deck = collection.selectedDeck()
 		deck.shuffle()
 
 		setupFlashCardView()

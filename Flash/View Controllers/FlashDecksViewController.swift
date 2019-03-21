@@ -99,6 +99,25 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 
+	func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+	{
+		let closeAction = UIContextualAction(style: .normal, title:  "Close") { action, view, success in
+			print("Selected deck: \(self.collection.decks[indexPath.row].title)")
+			self.collection.selectDeck(at: indexPath.row)
+			self.decksTableView.reloadData()
+			DispatchQueue.global().async { [weak self] in
+				self?.collection.save() // TODO: This is quite inefficient.
+			}
+
+			success(true)
+		}
+		closeAction.image = UIImage(named: "Tick")
+		closeAction.backgroundColor = .blue
+
+		return UISwipeActionsConfiguration(actions: [closeAction])
+
+	}
+
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}

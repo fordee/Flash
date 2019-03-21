@@ -18,6 +18,11 @@ class DeckCell: UITableViewCell {
 	func render(with deck: Deck) {
 		titleLabel.text = deck.title
 		numberOfCardsLabel.text = "\(deck.cards.count) Cards"
+		if deck.isSelected {
+			backgroundColor = .cyan
+		} else {
+			backgroundColor = .white
+		}
 	}
 
 

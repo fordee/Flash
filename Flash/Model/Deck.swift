@@ -17,6 +17,7 @@ struct Deck: Equatable, Hashable, Codable {
 	var frontLanguage: String?
 	var backLanguage: String?
 
+	private var selected: Bool? = false
 
 	var cards: [Card] = []
 	private var positionInDeck = 0
@@ -89,6 +90,18 @@ struct Deck: Equatable, Hashable, Codable {
 //		}
 //
 //	}
+
+	mutating func select() {
+		selected = true
+	}
+
+	mutating func deselect() {
+		selected = false
+	}
+
+	var isSelected: Bool {
+		return selected ?? false
+	}
 
 	mutating func shuffle() {
 		cards.shuffle()

@@ -52,7 +52,17 @@ class AddDeckViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		guard let isAdd = isAdd else { return }
-		title = isAdd ? "New Deck" : "Edit Deck"
+
+		if isAdd {
+			// Create empty deck
+			deck = Deck(title: "New Deck")
+			
+			title = "New Deck"
+		} else {
+			title = "Edit Deck"
+		}
+
+
 		guard let deck = deck else { return }
 		if !isAdd { titleTextField.text = deck.title }
 
