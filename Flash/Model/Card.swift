@@ -7,16 +7,79 @@
 //
 
 import UIKit
+import SQLite
 
 struct Card: Equatable, Hashable, Codable {
+	var id: Int64?
 	let backgroundColor: Color
 	var frontWord: String
 	var backWord: String
 
-	init(backgroundColor: Color, frontWord: String, backWord: String) {
+	init(id: Int64? = nil, backgroundColor: Color, frontWord: String, backWord: String) {
+		self.id = id
 		self.backgroundColor = backgroundColor
 		self.frontWord = frontWord
 		self.backWord = backWord
+	}
+
+	func addCard(deck: Deck) {
+		do {
+			guard let db = Database.getDbConnection() else { return }
+			let card = Table("card")
+
+			let deckIdColumn = Expression<Int64>("deck_id")
+			let frontWordColumn = Expression<String?>("front_word")
+			let backWordColumn = Expression<String?>("back_word")
+			let backgroundColorColumn = Expression<String>("background_color")
+
+			guard let deckId = getDeckId(for: deck) else { return }
+
+			let rowid = try db.run(card.insert(deckIdColumn <- deckId, frontWordColumn <- frontWord, backWordColumn <- backWord, backgroundColorColumn <- backgroundColor.color))
+			print("inserted id: \(rowid)")
+		} catch {
+			print("insertion failed: \(error)")
+		}
+	}
+
+	func updateCard(deck: Deck) {
+		do {
+			guard let db = Database.getDbConnection() else { return }
+			let cardTable = Table("card")
+
+			let deckIdColumn = Expression<Int64>("deck_id")
+			let frontWordColumn = Expression<String?>("front_word")
+			let backWordColumn = Expression<String?>("back_word")
+			let backgroundColorColumn = Expression<String>("background_color")
+
+			guard let deckId = getDeckId(for: deck) else { return }
+
+			let cardFiltered = cardTable.filter(deckIdColumn == deckId && frontWordColumn == frontWord)
+
+			let rowid = try db.run(cardFiltered.update(frontWordColumn <- frontWord, backWordColumn <- backWord, backgroundColorColumn <- backgroundColor.color))
+			print("updated id: \(rowid)")
+		} catch {
+			print("insertion failed: \(error)")
+		}
+	}
+
+	private func getDeckId(for deck: Deck) -> Int64? {
+		do {
+			guard let db = Database.getDbConnection() else { return nil }
+			let deckTable = Table("deck")
+			let id = Expression<Int64>("id")
+			let title = Expression<String>("title")
+
+			let filteredDeck = deckTable.filter(title == deck.title)
+			// Should only be one row because title is unique
+			if let row = try db.pluck(filteredDeck) {
+				return row[id]
+			} else {
+				return nil
+			}
+		} catch {
+			print("Error during database operation: \(error.localizedDescription)")
+		}
+		return nil
 	}
 }
 

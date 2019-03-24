@@ -24,12 +24,19 @@ class AddCardViewController: UIViewController {
 		let card = Card(backgroundColor: Color.random()/*.magenta*/, frontWord: frontTextView.text, backWord: backTextView.text)
 		if isAdd {
 			delegate?.add(card: card)
+			if let deck = deck {
+				card.addCard(deck: deck)
+			}
 		} else {
 			delegate?.update(card: card)
+			if let deck = deck {
+				card.updateCard(deck: deck)
+			}
 		}
 		navigationController?.popViewController(animated: true)
 	}
 
+	var deck: Deck?
 	var card: Card?
 	var isAdd: Bool?
 

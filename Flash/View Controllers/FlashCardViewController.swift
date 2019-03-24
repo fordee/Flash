@@ -30,7 +30,7 @@ class FlashCardViewController: UIViewController {
 
 	private let minScale: CGFloat = 0.8
 
-	private var collection = Collection()
+	//private var collection = Collection()
 	private var deck: Deck!
 
 	private var flashCardView: CardView!
@@ -50,8 +50,10 @@ class FlashCardViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = UIColor(named: "FlashBackgroundColor")
 
-		deck = collection.selectedDeck()
+		deck = Database.collection.selectedDeck()
 		deck.shuffle()
+
+		NotificationCenter.default.addObserver(self, selector: #selector(refreshSelectedDeck), name: .refreshSelectedDeck, object: nil)
 
 		setupFlashCardView()
 		flashCardView.render(with: deck.currentCard)
@@ -60,6 +62,12 @@ class FlashCardViewController: UIViewController {
 
 		view.addSubview(nextUpView)
 		view.addSubview(flashCardView)
+	}
+
+	@objc func refreshSelectedDeck(_ notification: Notification) {
+		//collection = Collection()
+		deck = Database.collection.selectedDeck()
+		deck.shuffle()
 	}
 
 	private func setupFlashCardView() {

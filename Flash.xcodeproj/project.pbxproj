@@ -17,10 +17,7 @@
 		4947F663222D8DCC001E74F7 /* LanguageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947F662222D8DCC001E74F7 /* LanguageTableViewController.swift */; };
 		49968FB92225A51300E11E1D /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */; };
 		49968FBB2226EB3D00E11E1D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49968FBA2226EB3D00E11E1D /* Color.swift */; };
-		49B10840221761AF009FAAFF /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; };
 		49B1084322176648009FAAFF /* JLPT2Vocab.csv in Resources */ = {isa = PBXBuildFile; fileRef = 49B1084222176648009FAAFF /* JLPT2Vocab.csv */; };
-		49B10844221769F3009FAAFF /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; };
-		49B10845221769F3009FAAFF /* CSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 49B1083F221761AF009FAAFF /* CSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		49B1084822176E6B009FAAFF /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 49B1084722176E6B009FAAFF /* test.csv */; };
 		49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B2199D22089CCC0076FBD9 /* Utility.swift */; };
 		49B219A1220A02C20076FBD9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219A0220A02C20076FBD9 /* Card.swift */; };
@@ -34,6 +31,7 @@
 		49B219B4220E55ED0076FBD9 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */; };
 		49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */; };
 		49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */; };
+		49D8BB702246C2480042F5D7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8BB6F2246C2480042F5D7 /* Database.swift */; };
 		49FDECFD221754E60063F3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFC221754E60063F3C2 /* AppDelegate.swift */; };
 		49FDECFF221754E60063F3C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFE221754E60063F3C2 /* ViewController.swift */; };
 		49FDED01221754E90063F3C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49FDED00221754E90063F3C2 /* Assets.xcassets */; };
@@ -51,20 +49,6 @@
 			remoteInfo = Flash;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		49B10846221769F4009FAAFF /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				49B10845221769F3009FAAFF /* CSV.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		334A7CCF1808A037B8705694 /* Pods_Flash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +81,7 @@
 		49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		49D8BB6F2246C2480042F5D7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		49FDECFA221754E20063F3C2 /* Flash-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FDECFC221754E60063F3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49FDECFE221754E60063F3C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,9 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49B10844221769F3009FAAFF /* CSV.framework in Frameworks */,
 				BDD42F17256A1A6E06A187B4 /* Pods_Flash.framework in Frameworks */,
-				49B10840221761AF009FAAFF /* CSV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +200,7 @@
 				49B219A2220A03770076FBD9 /* Deck.swift */,
 				4935F91F220F8A7000DA0971 /* Collection.swift */,
 				49968FBA2226EB3D00E11E1D /* Color.swift */,
+				49D8BB6F2246C2480042F5D7 /* Database.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,7 +272,6 @@
 				4938248A2204F1C300B4FFEA /* Frameworks */,
 				4938248B2204F1C300B4FFEA /* Resources */,
 				5987597E8F0B7BE921A6EFB0 /* [CP] Embed Pods Frameworks */,
-				49B10846221769F4009FAAFF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -489,6 +472,7 @@
 				49B219A8220A1D4C0076FBD9 /* CardView+Card.swift in Sources */,
 				49B219A6220A1B160076FBD9 /* CardView.swift in Sources */,
 				49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */,
+				49D8BB702246C2480042F5D7 /* Database.swift in Sources */,
 				49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

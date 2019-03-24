@@ -58,5 +58,9 @@ struct Color: Equatable, Hashable, Codable {
 		self.color = uiColorToString(color: color)
 	}
 
+	init(hexString: String) {
+		self.color = hexString
+	}
+
 }
 

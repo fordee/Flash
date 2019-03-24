@@ -17,24 +17,7 @@ class AddDeckViewController: UITableViewController {
 	@IBOutlet weak var frontLanguageLabel: UILabel!
 	@IBOutlet weak var backLanguageLabel: UILabel!
 	
-	
 	@IBOutlet weak var titleTextField: UITextField!
-
-	@IBAction func onCancelBarButton(_ sender: Any) {
-		navigationController?.popViewController(animated: true)
-	}
-
-	@IBAction func onSaveBarButton(_ sender: Any) {
-		print("Save")
-		guard let isAdd = isAdd else { fatalError("isAdd is not set") }
-		let deck = Deck(title: titleTextField.text ?? "")
-		if isAdd {
-			delegate?.add(deck: deck)
-		} else {
-			delegate?.update(deck: deck)
-		}
-		navigationController?.popViewController(animated: true)
-	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		isGoingForward = false
@@ -45,7 +28,6 @@ class AddDeckViewController: UITableViewController {
 			save()
 		}
 	}
-
 
 	weak var delegate: FlashDecksViewControllerDelegate?
 	
@@ -104,8 +86,10 @@ class AddDeckViewController: UITableViewController {
 
 		if isAdd {
 			delegate?.add(deck: deck)
+			deck.addDeck()
 		} else {
 			delegate?.update(deck: deck)
+			deck.updateDeck()
 		}
 	}
 

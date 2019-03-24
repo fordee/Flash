@@ -12,6 +12,7 @@ class FlashDeckDetailViewController: UIViewController {
 
 	@IBOutlet weak var cardsTableView: UITableView!
 
+	var deck: Deck?
 	var cards: [Card] = []
 	weak var delegate: FlashDecksViewControllerDelegate?
 
@@ -45,11 +46,13 @@ class FlashDeckDetailViewController: UIViewController {
 		case "NewCard":
 			guard let vc = segue.destination as? AddCardViewController else { return }
 			vc.navigationItem.title = "Add Card"
+			vc.deck = deck
 			vc.delegate = self
 			vc.isAdd = true
 		case "EditCard":
 			guard let vc = segue.destination as? AddCardViewController else { return }
 			vc.navigationItem.title = "Edit Card"
+			vc.deck = deck
 			vc.delegate = self
 			vc.isAdd = false
 			if let path = cardsTableView.indexPathForSelectedRow {
@@ -98,6 +101,9 @@ extension FlashDeckDetailViewController: FlashDeckDetailViewControllerDelegate {
 
 	func add(card: Card) {
 		cards.append(card)
+		if let deck = deck {
+			card.addCard(deck: deck)
+		}
 		cardsTableView.reloadData()
 	}
 
