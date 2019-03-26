@@ -55,7 +55,8 @@ struct Collection: Equatable, Hashable, Codable {
 
 	mutating func addDeck(deck: Deck) {
 		decks.append(deck)
-		deck.add()
+		guard let index = decks.firstIndex(of: deck) else { fatalError("Can't get index of just added Deck.") }
+		decks[index].add()
 	}
 
 	mutating func updateDeck(_ deck: Deck, at index: Int) {
@@ -65,6 +66,10 @@ struct Collection: Equatable, Hashable, Codable {
 
 	mutating func setCards(_ cards: [Card], atDeckIndex: Int) {
 		decks[atDeckIndex].setCards(cards)
+	}
+
+	mutating func addCard(_ card: Card, forDeckAt index: Int) {
+		decks[index].addCard(card)
 	}
 
 	func selectedDeck() -> Deck? {
@@ -87,14 +92,14 @@ struct Collection: Equatable, Hashable, Codable {
 
 	}
 
-	func saveToDatabase() {
-		for deck in decks {
-			deck.add()
-			for card in deck.allCards {
-				card.add(deck: deck)
-			}
-		}
-	}
+//	func saveToDatabase() {
+//		for deck in decks {
+//			deck.add()
+//			for card in deck.allCards {
+//				card.add(deck: deck)
+//			}
+//		}
+//	}
 
 //	func save() {
 //		guard let url = fileUrl, let encodedObject = try? JSONEncoder().encode(decks) else { return }

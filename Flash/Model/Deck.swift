@@ -55,7 +55,11 @@ struct Deck: Equatable, Hashable, Codable {
 		self.cards = cards
 	}
 
-	func add() {
+	mutating func addCard(_ card: Card) {
+		cards.append(card)
+	}
+
+	mutating func add() {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let deck = Table("deck")
@@ -65,6 +69,7 @@ struct Deck: Equatable, Hashable, Codable {
 			let selectedColumn = Expression<Bool>("selected")
 
 			let rowid = try db.run(deck.insert(titleColumn <- title, frontLanguageColumn <- frontLanguage, backLanguageColumn <- backLanguage, selectedColumn <- selected))
+			id = rowid
 			print("inserted id: \(rowid)")
 		} catch {
 			print("insertion failed: \(error)")

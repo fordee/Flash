@@ -97,8 +97,9 @@ extension FlashDeckDetailViewController: FlashDeckDetailViewControllerDelegate {
 
 	func add(card: Card) {
 		cards.append(card)
-		if let deck = deck {
-			card.add(deck: deck)
+		if let deck = deck,	let index = Database.collection.allDecks.firstIndex(of: deck) {
+			Database.collection.addCard(card, forDeckAt: index)
+			//card.add(deck: deck)
 		}
 		cardsTableView.reloadData()
 	}

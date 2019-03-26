@@ -76,7 +76,7 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == UITableViewCell.EditingStyle.delete {
-			let deck = Database.collection.deck(at: indexPath.row)
+			//let deck = Database.collection.deck(at: indexPath.row)
 			//deck.delete() TODO: remove comment
 			Database.collection.removeDeck(at: indexPath.row) //decks.remove(at: indexPath.row) // TODO: This should be part of delete function
 			tableView.deleteRows(at: [indexPath], with: .automatic)

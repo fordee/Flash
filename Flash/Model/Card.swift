@@ -22,7 +22,7 @@ struct Card: Equatable, Hashable, Codable {
 		self.backWord = backWord
 	}
 
-	func add(deck: Deck) {
+	mutating func add(deck: Deck) {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let card = Table("card")
@@ -35,6 +35,7 @@ struct Card: Equatable, Hashable, Codable {
 			guard let deckId = getDeckId(for: deck) else { return }
 
 			let rowid = try db.run(card.insert(deckIdColumn <- deckId, frontWordColumn <- frontWord, backWordColumn <- backWord, backgroundColorColumn <- backgroundColor.color))
+			id = rowid
 			print("inserted id: \(rowid), deck id: \(deckId)")
 		} catch {
 			print("insertion failed: \(error)")
