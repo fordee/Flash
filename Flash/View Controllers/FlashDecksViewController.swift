@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FlashDecksViewController: UIViewController {
 
 	@IBOutlet weak var searchBar: UISearchBar!
@@ -19,29 +20,24 @@ class FlashDecksViewController: UIViewController {
 		
 	}
 
-	//var collection = Collection()
-
 	var accessoryRowSelected: Int? = nil
-
-	//var decks: [Deck] = []
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		title = "Flash Decks"
+
 	}
 
 	// MARK: - Navigation
-
-	// In a storyboard-based application, you will often want to do a little preparation before navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 		switch segue.identifier {
 		case "DeckShow":
 			if let vc = segue.destination as? FlashDeckDetailViewController {
 				if let path = decksTableView.indexPathForSelectedRow {
-					vc.navigationItem.title = Database.collection.decks[path.row].title
-					vc.deck = Database.collection.decks[path.row]
-					vc.cards = Database.collection.decks[path.row].cards
+					vc.navigationItem.title = Database.collection.deck(at: path.row).title
+					vc.deck = Database.collection.deck(at: path.row)
+					vc.cards = Database.collection.deck(at: path.row).allCards
 					vc.delegate = self
 				}
 			}
@@ -52,7 +48,7 @@ class FlashDecksViewController: UIViewController {
 			}
 		case "EditDeck":
 			if let vc = segue.destination as? AddDeckViewController, let cell = (sender as? DeckCell), let path = decksTableView.indexPath(for: cell) {
-				vc.deck = Database.collection.decks[path.row]
+				vc.deck = Database.collection.deck(at: path.row)
 				//vc.deckTitle = text
 				vc.delegate = self
 				vc.isAdd = false
@@ -61,11 +57,10 @@ class FlashDecksViewController: UIViewController {
 			fatalError("Unknown segue.identifier: \(segue.identifier ?? "")")
 		}
 
-
 		if segue.identifier == "DeckShow" {
 			let vc = segue.destination
 			if let path = decksTableView.indexPathForSelectedRow {
-				vc.navigationItem.title = Database.collection.decks[path.row].title
+				vc.navigationItem.title = Database.collection.deck(at: path.row).title
 			}
 		}
 	}
@@ -81,7 +76,9 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == UITableViewCell.EditingStyle.delete {
-			Database.collection.decks.remove(at: indexPath.row)
+			let deck = Database.collection.deck(at: indexPath.row)
+			//deck.delete() TODO: remove comment
+			Database.collection.removeDeck(at: indexPath.row) //decks.remove(at: indexPath.row) // TODO: This should be part of delete function
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 		}
 	}
@@ -89,7 +86,7 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
 	{
 		let closeAction = UIContextualAction(style: .normal, title:  "Close") { action, view, success in
-			print("Selected deck: \(Database.collection.decks[indexPath.row].title)")
+			print("Selected deck: \(Database.collection.deck(at: indexPath.row).title)")
 			Database.collection.selectDeck(at: indexPath.row)
 			self.decksTableView.reloadData()
 			NotificationCenter.default.post(name: .refreshSelectedDeck, object: nil, userInfo: nil)
@@ -107,12 +104,12 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return Database.collection.decks.count
+		return Database.collection.allDecks.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "DeckCell", for: indexPath) as! DeckCell
-		cell.render(with: Database.collection.decks[indexPath.row])
+		cell.render(with: Database.collection.deck(at: indexPath.row))
 		cell.selectionStyle = .none
 		return cell
 	}
@@ -124,36 +121,27 @@ extension FlashDecksViewController: UITableViewDataSource, UITableViewDelegate {
 
 }
 
-protocol FlashDecksViewControllerDelegate: AnyObject {
-	func add(deck: Deck)
-	func update(deck: Deck)
-	func update(cards: [Card])
-}
-
-extension FlashDecksViewController: FlashDecksViewControllerDelegate {
+extension FlashDecksViewController: AddDeckViewControllerDelegate {
 	func add(deck: Deck) {
-		Database.collection.decks.append(deck)
-		deck.addDeck()
-		//collection.save()
+		Database.collection.addDeck(deck: deck)
 		decksTableView.reloadData()
 	}
 
 	func update(deck: Deck) {
 		if let path = decksTableView.indexPathForSelectedRow {
-			Database.collection.decks[path.row] = deck
+			Database.collection.updateDeck(deck, at: path.row)
 		} else if let row = accessoryRowSelected {
-			Database.collection.decks[row] = deck
+			Database.collection.updateDeck(deck, at: row)//decks[row] = deck
 			accessoryRowSelected = nil
 		} else {
-			print("No row selected")
+			fatalError("No row selected")
 		}
-		//collection.save()
 		decksTableView.reloadData()
 	}
 
 	func update(cards: [Card]) {
 		if let path = decksTableView.indexPathForSelectedRow {
-			Database.collection.decks[path.row].cards = cards
+			Database.collection.setCards(cards, atDeckIndex: path.row)//deck(at: path.row).setCards(cards)
 		} else {
 			print("No row selected")
 		}

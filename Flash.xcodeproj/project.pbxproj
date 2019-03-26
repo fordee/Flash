@@ -31,6 +31,8 @@
 		49B219B4220E55ED0076FBD9 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */; };
 		49B219B6220E55FD0076FBD9 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */; };
 		49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */; };
+		49C87A692249323A0001E7AF /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C87A682249323A0001E7AF /* Importer.swift */; };
+		49C87A6B22493D600001E7AF /* TemporaryFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C87A6A22493D600001E7AF /* TemporaryFile.swift */; };
 		49D8BB702246C2480042F5D7 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8BB6F2246C2480042F5D7 /* Database.swift */; };
 		49FDECFD221754E60063F3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFC221754E60063F3C2 /* AppDelegate.swift */; };
 		49FDECFF221754E60063F3C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDECFE221754E60063F3C2 /* ViewController.swift */; };
@@ -66,7 +68,6 @@
 		4947F662222D8DCC001E74F7 /* LanguageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableViewController.swift; sourceTree = "<group>"; };
 		49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		49968FBA2226EB3D00E11E1D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		49B1083F221761AF009FAAFF /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CSV.framework; sourceTree = "<group>"; };
 		49B1084222176648009FAAFF /* JLPT2Vocab.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JLPT2Vocab.csv; sourceTree = "<group>"; };
 		49B1084722176E6B009FAAFF /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		49B2199D22089CCC0076FBD9 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -81,6 +82,8 @@
 		49B219B3220E55ED0076FBD9 /* AddDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
 		49B219B5220E55FD0076FBD9 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		49B6F16F222ED551009C6FAD /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		49C87A682249323A0001E7AF /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		49C87A6A22493D600001E7AF /* TemporaryFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryFile.swift; sourceTree = "<group>"; };
 		49D8BB6F2246C2480042F5D7 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		49FDECFA221754E20063F3C2 /* Flash-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Flash-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FDECFC221754E60063F3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,14 +166,13 @@
 				49B219AC220C94050076FBD9 /* Cells */,
 				49B219A9220C922A0076FBD9 /* View Controllers */,
 				49B219A4220A1AFD0076FBD9 /* Views */,
+				49C87A672247FAFB0001E7AF /* Utility */,
 				49B1084122176601009FAAFF /* Resources */,
 				493824902204F1C300B4FFEA /* AppDelegate.swift */,
 				493824942204F1C300B4FFEA /* Main.storyboard */,
 				493824972204F1C900B4FFEA /* Assets.xcassets */,
 				493824992204F1C900B4FFEA /* LaunchScreen.storyboard */,
 				4938249C2204F1C900B4FFEA /* Info.plist */,
-				49B2199D22089CCC0076FBD9 /* Utility.swift */,
-				49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */,
 			);
 			path = Flash;
 			sourceTree = "<group>";
@@ -237,6 +239,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		49C87A672247FAFB0001E7AF /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				49B2199D22089CCC0076FBD9 /* Utility.swift */,
+				49968FB82225A51300E11E1D /* SpeechSynthesizer.swift */,
+				49C87A682249323A0001E7AF /* Importer.swift */,
+				49C87A6A22493D600001E7AF /* TemporaryFile.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		49FDECFB221754E60063F3C2 /* Flash-macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,7 +266,6 @@
 		9742E8A503D3FE37E67A88A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49B1083F221761AF009FAAFF /* CSV.framework */,
 				334A7CCF1808A037B8705694 /* Pods_Flash.framework */,
 				A7D7C42B9F05498B47528B93 /* Pods_FlashTests.framework */,
 			);
@@ -401,11 +413,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Flash/Pods-Flash-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
+				"${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLite.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZIPFoundation.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,9 +484,11 @@
 				49B219A1220A02C20076FBD9 /* Card.swift in Sources */,
 				49B219B2220E37700076FBD9 /* CardCell.swift in Sources */,
 				49B219A8220A1D4C0076FBD9 /* CardView+Card.swift in Sources */,
+				49C87A692249323A0001E7AF /* Importer.swift in Sources */,
 				49B219A6220A1B160076FBD9 /* CardView.swift in Sources */,
 				49B2199E22089CCC0076FBD9 /* Utility.swift in Sources */,
 				49D8BB702246C2480042F5D7 /* Database.swift in Sources */,
+				49C87A6B22493D600001E7AF /* TemporaryFile.swift in Sources */,
 				49B6F170222ED551009C6FAD /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,13 +676,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Flash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -683,13 +700,14 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Flash/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.4DWare.Flash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

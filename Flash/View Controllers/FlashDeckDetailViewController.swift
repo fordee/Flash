@@ -14,21 +14,14 @@ class FlashDeckDetailViewController: UIViewController {
 
 	var deck: Deck?
 	var cards: [Card] = []
-	weak var delegate: FlashDecksViewControllerDelegate?
+	weak var delegate: AddDeckViewControllerDelegate?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-//		let deck = Deck(title: "Test Deck")
-//		cards = deck.cards
-
 	}
 
-
-
 	// MARK: - Navigation
-
-
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 
@@ -73,6 +66,9 @@ extension FlashDeckDetailViewController: UITableViewDataSource, UITableViewDeleg
 
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		if editingStyle == UITableViewCell.EditingStyle.delete {
+			guard let deck = deck else { return }
+			let card = cards[indexPath.row]
+			card.delete(deck: deck)
 			cards.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .automatic)
 		}
@@ -102,7 +98,7 @@ extension FlashDeckDetailViewController: FlashDeckDetailViewControllerDelegate {
 	func add(card: Card) {
 		cards.append(card)
 		if let deck = deck {
-			card.addCard(deck: deck)
+			card.add(deck: deck)
 		}
 		cardsTableView.reloadData()
 	}
@@ -110,6 +106,9 @@ extension FlashDeckDetailViewController: FlashDeckDetailViewControllerDelegate {
 	func update(card: Card) {
 		if let path = cardsTableView.indexPathForSelectedRow {
 			cards[path.row] = card
+			if let deck = deck {
+				card.update(deck: deck)
+			}
 			cardsTableView.reloadData()
 		} else {
 			print("No row selected")

@@ -22,7 +22,7 @@ struct Card: Equatable, Hashable, Codable {
 		self.backWord = backWord
 	}
 
-	func addCard(deck: Deck) {
+	func add(deck: Deck) {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let card = Table("card")
@@ -35,13 +35,13 @@ struct Card: Equatable, Hashable, Codable {
 			guard let deckId = getDeckId(for: deck) else { return }
 
 			let rowid = try db.run(card.insert(deckIdColumn <- deckId, frontWordColumn <- frontWord, backWordColumn <- backWord, backgroundColorColumn <- backgroundColor.color))
-			print("inserted id: \(rowid)")
+			print("inserted id: \(rowid), deck id: \(deckId)")
 		} catch {
 			print("insertion failed: \(error)")
 		}
 	}
 
-	func updateCard(deck: Deck) {
+	func update(deck: Deck) {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let cardTable = Table("card")
@@ -58,8 +58,29 @@ struct Card: Equatable, Hashable, Codable {
 			let rowid = try db.run(cardFiltered.update(frontWordColumn <- frontWord, backWordColumn <- backWord, backgroundColorColumn <- backgroundColor.color))
 			print("updated id: \(rowid)")
 		} catch {
-			print("insertion failed: \(error)")
+			print("update failed: \(error)")
 		}
+	}
+
+	func delete(deck: Deck) {
+		do {
+			guard let db = Database.getDbConnection() else { return }
+			let cardTable = Table("card")
+
+			let deckIdColumn = Expression<Int64>("deck_id")
+			let frontWordColumn = Expression<String?>("front_word")
+
+			guard let deckId = getDeckId(for: deck) else { return }
+
+			let cardFiltered = cardTable.filter(deckIdColumn == deckId && frontWordColumn == frontWord)
+
+			try db.run(cardFiltered.delete())
+			print("delete suceeded")
+
+		} catch {
+			print("delete failed: \(error)")
+		}
+		
 	}
 
 	private func getDeckId(for deck: Deck) -> Int64? {

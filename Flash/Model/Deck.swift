@@ -20,8 +20,12 @@ struct Deck: Equatable, Hashable, Codable {
 
 	private var selected: Bool = false
 
-	var cards: [Card] = []
+	private var cards: [Card] = []
 	private var positionInDeck = 0
+
+	var allCards: [Card] {
+		return cards
+	}
 
 	var currentCard: Card {
 		return cards[positionInDeck]
@@ -47,7 +51,11 @@ struct Deck: Equatable, Hashable, Codable {
 		self.selected = selected
 	}
 
-	func addDeck() {
+	mutating func setCards(_ cards: [Card]) {
+		self.cards = cards
+	}
+
+	func add() {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let deck = Table("deck")
@@ -63,7 +71,7 @@ struct Deck: Equatable, Hashable, Codable {
 		}
 	}
 
-	func updateDeck() {
+	func update() {
 		do {
 			guard let db = Database.getDbConnection() else { return }
 			let deck = Table("deck")
@@ -83,15 +91,31 @@ struct Deck: Equatable, Hashable, Codable {
 		}
 	}
 
+	func delete() {
+		do {
+			guard let db = Database.getDbConnection() else { return }
+			let deck = Table("deck")
+			let idColumn = Expression<Int64>("id")
+
+			guard let deckId = id else { return }
+
+			let deckFiltered = deck.filter(idColumn == deckId)
+			try db.run(deckFiltered.delete())
+			print("delete suceeded")
+		} catch {
+			print("delete failed: \(error)")
+		}
+	}
+
 
 	mutating func select() {
 		selected = true
-		updateDeck()
+		update()
 	}
 
 	mutating func deselect() {
 		selected = false
-		updateDeck()
+		update()
 	}
 
 	var isSelected: Bool {

@@ -17,7 +17,7 @@ class DeckCell: UITableViewCell {
 
 	func render(with deck: Deck) {
 		titleLabel.text = deck.title
-		numberOfCardsLabel.text = "\(deck.cards.count) Cards"
+		numberOfCardsLabel.text = "\(deck.allCards.count) Cards"
 		if deck.isSelected {
 			backgroundColor = .cyan
 		} else {

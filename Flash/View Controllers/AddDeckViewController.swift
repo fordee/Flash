@@ -6,6 +6,12 @@
 //  Copyright © 2019 4DWare. All rights reserved.
 //
 
+protocol AddDeckViewControllerDelegate: AnyObject {
+	func add(deck: Deck)
+	func update(deck: Deck)
+	func update(cards: [Card])
+}
+
 import UIKit
 
 class AddDeckViewController: UITableViewController {
@@ -19,6 +25,13 @@ class AddDeckViewController: UITableViewController {
 	
 	@IBOutlet weak var titleTextField: UITextField!
 
+	@IBAction func onImportButton(_ sender: UIBarButtonItem) {
+		let filename = "All_in_One_Kanji_Deck1.apkg"
+		let importer = Importer()
+
+		importer.importAnki(filename: filename)
+	}
+
 	override func viewWillAppear(_ animated: Bool) {
 		isGoingForward = false
 	}
@@ -29,7 +42,7 @@ class AddDeckViewController: UITableViewController {
 		}
 	}
 
-	weak var delegate: FlashDecksViewControllerDelegate?
+	weak var delegate: AddDeckViewControllerDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -86,10 +99,8 @@ class AddDeckViewController: UITableViewController {
 
 		if isAdd {
 			delegate?.add(deck: deck)
-			deck.addDeck()
 		} else {
 			delegate?.update(deck: deck)
-			deck.updateDeck()
 		}
 	}
 

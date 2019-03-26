@@ -220,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="2517.5999999999999" y="573.46326836581716"/>
         </scene>
-        <!--Add Deck View Controller-->
+        <!--Title-->
         <scene sceneID="IOS-6e-t17">
             <objects>
                 <tableViewController id="IW7-RZ-Iwj" customClass="AddDeckViewController" customModule="Flash" customModuleProvider="target" sceneMemberID="viewController">
@@ -314,6 +314,13 @@
                             <outlet property="delegate" destination="IW7-RZ-Iwj" id="bep-yF-3Je"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="khW-Ec-kyE">
+                        <barButtonItem key="rightBarButtonItem" title="Import" id="Vjw-kS-kAv">
+                            <connections>
+                                <action selector="onImportButton:" destination="IW7-RZ-Iwj" id="X9s-dY-WXh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backLanguageLabel" destination="G15-FZ-Uad" id="VwA-GW-Vly"/>
                         <outlet property="frontLanguageLabel" destination="ENO-yF-TGb" id="nWH-pL-skN"/>
