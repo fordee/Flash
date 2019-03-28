@@ -9,14 +9,15 @@
 import Foundation
 import ZIPFoundation
 
+
 class Importer {
 
 	let fileManager: FileManager
-	let currentWorkingPath: String
+	//let currentWorkingPath: String
 
 	init () {
 		fileManager = FileManager()
-		currentWorkingPath = fileManager.currentDirectoryPath
+		//currentWorkingPath = fileManager.currentDirectoryPath
 	}
 
 	func importAnki(filename: String) {
@@ -27,11 +28,37 @@ class Importer {
 
 			let tmp = try TemporaryFile(creatingTempDirectoryForFilename: "tempfile")
 
-			//try fileManager.createDirectory(at: destinationDirectory, withIntermediateDirectories: true, attributes: nil)
-			try fileManager.unzipItem(at: sourceURL, to: tmp.fileURL)
+			try fileManager.unzipItem(at: sourceURL, to: tmp.directoryURL)
+
+			defer {
+				try? tmp.deleteDirectory()
+			}
+
+			guard let ankiFilename = getAnkiFilename(in: tmp.directoryURL) else { return }
+
+			let ankiFilepath = tmp.directoryURL.appendingPathComponent(ankiFilename, isDirectory: false)
+
+			print("AnkiFilepath: \(ankiFilepath)")
+
+
 		} catch {
 			print("Extraction of ZIP archive failed with error:\(error)")
 		}
+	}
+
+	private func getAnkiFilename(in url: URL) -> String? {
+		do {
+			let files = try fileManager.contentsOfDirectory(atPath: url.path)
+			for file in files {
+				if (file as NSString).pathExtension == "anki2" {
+					return file
+				}
+			}
+		} catch {
+			print("Error: \(error.localizedDescription)")
+			return nil
+		}
+		return nil
 	}
 
 }

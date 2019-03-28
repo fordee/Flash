@@ -51,7 +51,6 @@ class AddDeckViewController: UITableViewController {
 		if isAdd {
 			// Create empty deck
 			deck = Deck(title: "New Deck")
-			
 			title = "New Deck"
 		} else {
 			title = "Edit Deck"
